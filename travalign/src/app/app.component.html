@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <span>Travalign - plan great trips together</span>
+  <div *ngIf="user$ | async; then profile else login"></div>
+  
+</mat-toolbar>
+
+<ng-template #profile>
+  <div class="profile" *ngIf="user$ | async as user">
+    <h3>Welcome, {{user.displayName}}</h3>
+      <img class="avatar" [src]="user.photoURL">
+  </div>
+</ng-template>
+
+<ng-template #login>
+  <button type="button">Login</button>
+</ng-template>
