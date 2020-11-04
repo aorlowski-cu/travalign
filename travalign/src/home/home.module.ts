@@ -13,7 +13,9 @@ import { ActivityComponent } from './activity/activity.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [TripsComponent, TripDetailComponent, ActivityComponent],
@@ -29,7 +31,10 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatButtonToggleModule
   ],
   exports: [
     TripsComponent,

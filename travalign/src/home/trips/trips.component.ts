@@ -58,6 +58,7 @@ export class TripsComponent implements OnInit {
     this.tripsService.addTrip(newTrip);
     console.log("new trip created");
     this.createTripForm.reset();
+    console.log('Reset')
     this.showForm = !this.showForm;
   }
 }

@@ -2,6 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from '../trip';
 import { TripsService } from '../services/trips.service';
+import { addDays, formatDate } from '../utils';
+
+interface Ideas {
+  restaurants?: string[],
+  hotels?: string[],
+  spots?: string[]
+}
+
+interface DateNode {
+  date: string,
+  ideas: Ideas
+}
 
 @Component({
   selector: 'app-trip-detail',
@@ -9,8 +21,20 @@ import { TripsService } from '../services/trips.service';
   styleUrls: ['./trip-detail.component.scss']
 })
 export class TripDetailComponent implements OnInit {
+  panelOpenState: boolean = false;
   trips: Trip[];
   trip: Trip;
+  itinerary: DateNode[] = [
+    {
+      date: "02/02/2020",
+      ideas: {}
+    },
+    {
+      date: "02/03/2020",
+      ideas: {}
+    }
+  ];
+  dates: string[];
 
   constructor(private route: ActivatedRoute,
               private tripsService: TripsService) {

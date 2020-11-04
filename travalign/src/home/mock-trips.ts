@@ -4,16 +4,16 @@ export const TRIPS: Trip[] = [
   {
     id: 1,
     name: "Trip 1",
-    startDate: "2020/02/02",
-    endDate: "2020/02/08",
+    startDate: "02/02/2020",
+    endDate: "02/08/2020",
     hotels: ["hotel1", "hotel2"],
     members: ["Andy"]
   },
   {
     id: 2,
     name: "Trip 2",
-    startDate: "2020/03/10",
-    endDate: "2020/03/21",
+    startDate: "03/10/2020",
+    endDate: "03/21/2020",
     hotels: ["hotel12"],
     members: ["Alex", "Lincoln"]
   }

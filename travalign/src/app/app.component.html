@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span>Travalign - plan great trips together</span>
+  <span routerLink="/trip">Travalign - plan great trips together</span>
   <div *ngIf="user$ | async; then profile else login"></div>
 </mat-toolbar>
 

@@ -9,5 +9,11 @@ export function formatDate(date: Date) {
     month = '0' + month;
   if (day.length < 2) 
     day = '0' + day;
-  return [year, month, day].join('/')
+  return [month, day, year].join('/')
+}
+
+export function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
 }

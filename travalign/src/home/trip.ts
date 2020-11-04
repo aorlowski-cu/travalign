@@ -1,9 +1,9 @@
 
 export interface Trip {
   id: Number;
-  name: String;
-  startDate: String;
-  endDate: String;
-  hotels: String[];
-  members: String[];
+  name: string;
+  startDate: string;
+  endDate: string;
+  hotels: string[];
+  members: string[];
 }
