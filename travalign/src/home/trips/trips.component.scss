@@ -90,6 +90,10 @@ $mat-base-color: white;
 //   }
 // }
 
+mat-label {
+  color: $mat-base-color;
+}
+
 ::ng-deep .mat-select-value-text {
   color: $mat-base-color;
 }
