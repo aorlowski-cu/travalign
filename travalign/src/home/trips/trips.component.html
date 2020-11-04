@@ -1,1 +1,53 @@
-<p>trips works!</p>
+<div class="container">
+  <div class="placeholder">
+    <div class="trips-list">
+      <label class='title-label'>Your Trips</label>
+
+      <div *ngFor="let trip of trips" class="trip-routerlink">
+        <mat-card routerLink="/trip/detail/{{trip.id}}">
+          <mat-card-title>{{trip.name}}</mat-card-title>
+          <mat-card-subtitle>{{trip.startDate}} ~ {{trip.endDate}}</mat-card-subtitle>
+          <mat-card-content>
+            <mat-icon>group</mat-icon>
+            {{trip.members.toString()}}
+          </mat-card-content>
+          <!-- <mat-card-footer>Members: {{trip.members}}</mat-card-footer> -->
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  <button mat-fab color="accent" (click)=clickAdd() class="add-button">
+    <mat-icon aria-hidden="false">add</mat-icon>
+  </button>
+  
+  <div *ngIf="showForm" class="form-group">
+    <mat-label class="title">Start new Trip</mat-label>
+
+    <form [formGroup]="createTripForm" class="form-container" (ngSubmit)="onCreateTrip(createTripForm.value)">
+      <mat-form-field>
+        <mat-label>Trip Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" formControlName="startDate" required>
+          <input matEndDate placeholder="End date" formControlName="endDate" required>
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Add members</mat-label>
+        <mat-select formControlName="members" multiple>
+          <mat-option *ngFor="let friend of friends" [value]="friend">{{friend}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <button mat-raised-button color="accent" type="submit">Create Trip</button>
+    </form>
+  </div>  
+</div>

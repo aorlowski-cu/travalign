@@ -1,7 +1,6 @@
 <mat-toolbar>
   <span>Travalign - plan great trips together</span>
   <div *ngIf="user$ | async; then profile else login"></div>
-  
 </mat-toolbar>
 
 <ng-template #profile>
@@ -12,5 +11,16 @@
 </ng-template>
 
 <ng-template #login>
-  <button type="button">Login</button>
+  <button type="button" (click)="logIn()">Log in</button>
 </ng-template>
+
+
+<div *ngIf="user$ async" class="router-outlet">
+  <!-- <app-trips></app-trips> -->
+  <!-- <nav>
+    <a routerLink="/trip">Trip</a>
+    <br>
+    <a routerLink="/trip/detail">Detail 1</a>
+  </nav> -->
+  <router-outlet></router-outlet>
+</div>

@@ -12,7 +12,8 @@ export class AppComponent {
   constructor(private readonly authService: AuthService){
   }
 
-  login(){
+  logIn(){
+    console.log("login button clicked!");
     this.authService.initGoogleLogin();
   }
 }

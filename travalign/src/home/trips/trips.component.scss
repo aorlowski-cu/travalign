@@ -1,0 +1,93 @@
+$mat-base-color: black;
+
+.placeholder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .add-button {
+    margin-bottom: 10px;
+  }
+}
+
+.trips-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-style: solid;
+  border: 1px;
+  margin-top: 30px;
+  .trip-routerlink {
+    margin-bottom: 10px;
+    mat-card {
+      width: 300px;
+    }
+  }
+}
+
+.title-label {
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
+  margin-bottom: 10px;
+
+  .title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: large;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    
+    mat-form-field {
+      width: 300px;
+      margin-left: 20px;
+      
+      mat-label {
+        color: $mat-base-color;
+      }
+    
+      mat-datepicker-toggle {
+        color: $mat-base-color;
+      }
+
+    }
+    button {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+::ng-deep .mat-select-value-text {
+  color: $mat-base-color;
+}
+
+::ng-deep .mat-select-option-text {
+  color: $mat-base-color;
+}
+
+::ng-deep .mat-date-range-input-separator {
+  color: $mat-base-color;
+}
