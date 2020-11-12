@@ -1,19 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from '../trip';
 import { TripsService } from '../services/trips.service';
 import { addDays, formatDate } from '../utils';
-
-interface Ideas {
-  restaurants?: string[],
-  hotels?: string[],
-  spots?: string[]
-}
-
-interface DateNode {
-  date: string,
-  ideas: Ideas
-}
 
 @Component({
   selector: 'app-trip-detail',
@@ -22,18 +11,7 @@ interface DateNode {
 })
 export class TripDetailComponent implements OnInit {
   panelOpenState: boolean = false;
-  trips: Trip[];
   trip: Trip;
-  itinerary: DateNode[] = [
-    {
-      date: "02/02/2020",
-      ideas: {}
-    },
-    {
-      date: "02/03/2020",
-      ideas: {}
-    }
-  ];
   dates: string[];
 
   constructor(private route: ActivatedRoute,
@@ -41,16 +19,17 @@ export class TripDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.trips = this.tripsService.getTrips();
     this.route.paramMap.subscribe(params => {
-      const id = parseInt(params.get('id'));
-      console.log(id);
-      this.trip = this.getTrip(id);
+      const id = params.get('id');
+      this.getTrip(id);
     });
   }
 
-  getTrip(id: Number): Trip {
-    return this.trips.filter(trip => trip.id == id)[0];
+  getTrip(id: string): void {
+    this.tripsService.getTrip(id)
+      .subscribe(trip => {
+        this.trip = trip.data();
+      });
   }
 
 }

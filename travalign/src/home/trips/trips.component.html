@@ -10,7 +10,7 @@
           <mat-card-subtitle>{{trip.startDate}} ~ {{trip.endDate}}</mat-card-subtitle>
           <mat-card-content *ngIf="trip.members">
             <mat-icon>group</mat-icon>
-            {{trip.members.toString()}}
+            {{trip.members.join(', ')}}
           </mat-card-content>
         </mat-card>
       </div>

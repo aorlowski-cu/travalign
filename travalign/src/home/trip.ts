@@ -1,6 +1,6 @@
 
 export interface Trip {
-  id: Number;
+  id?: string;
   name: string;
   startDate: string;
   endDate: string;

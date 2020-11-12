@@ -4,6 +4,9 @@ import { Trip } from '../trip';
 import { FormControl, FormGroup} from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { formatDate } from '../utils';
+import { v4 as uuidv4 } from 'uuid';
+import { Observable, of } from 'rxjs';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-trips',
@@ -25,11 +28,19 @@ export class TripsComponent implements OnInit {
 
   friends: String[] = ["Alex", "Lincoln"];
 
+  userName: String;
+
   constructor(private tripsService: TripsService,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private readonly authService: AuthService) {
+    this.authService.user$.subscribe(user => this.userName = user.displayName);
+  }
 
   ngOnInit(): void {
-    this.trips = this.tripsService.getTrips();
+    this.tripsService.getTrips()
+      .subscribe(trips => this.trips = trips);
+    
+    console.log(this.trips);
     this.createTripForm = this.formBuilder.group({
       name: '',
       startDate: '',
@@ -47,12 +58,12 @@ export class TripsComponent implements OnInit {
   onCreateTrip(trip) {
     console.log(trip['members']);
     const newTrip: Trip = {
-      id: 100,
+      id: uuidv4(),
       name: trip['name'],
       startDate: formatDate(trip['startDate']),
       endDate: formatDate(trip['endDate']),
       hotels: [],
-      members: trip['members']
+      members: trip['members'].concat([this.userName])
     };
     console.log(newTrip);
     this.tripsService.addTrip(newTrip);
