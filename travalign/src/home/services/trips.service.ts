@@ -31,6 +31,8 @@ export class TripsService {
     return this.tripsCollection.doc(id).get();
   }
 
+// API: https://github.com/angular/angularfire/blob/master/docs/firestore/collections.md
+
   addTrip(trip: Trip): void {
     // this.trips.push(trip);
 
