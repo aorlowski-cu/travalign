@@ -45,7 +45,6 @@ export class TripsComponent implements OnInit {
       name: '',
       startDate: '',
       endDate: '',
-      hotels: [],
       members: []
     })
   }
@@ -62,8 +61,8 @@ export class TripsComponent implements OnInit {
       name: trip['name'],
       startDate: formatDate(trip['startDate']),
       endDate: formatDate(trip['endDate']),
-      hotels: [],
-      members: trip['members'].concat([this.userName])
+      members: trip['members'].concat([this.userName]),
+      activities: []
     };
     console.log(newTrip);
     this.tripsService.addTrip(newTrip);

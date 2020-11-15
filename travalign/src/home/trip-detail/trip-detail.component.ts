@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from '../trip';
 import { TripsService } from '../services/trips.service';
 import { addDays, formatDate } from '../utils';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trip-detail',
@@ -11,25 +12,17 @@ import { addDays, formatDate } from '../utils';
 })
 export class TripDetailComponent implements OnInit {
   panelOpenState: boolean = false;
-  trip: Trip;
+  trip$: Observable<Trip>;
   dates: string[];
 
   constructor(private route: ActivatedRoute,
               private tripsService: TripsService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-      this.getTrip(id);
+      this.trip$ = this.tripsService.getTripObserver(id);
     });
   }
-
-  getTrip(id: string): void {
-    this.tripsService.getTrip(id)
-      .subscribe(trip => {
-        this.trip = trip.data();
-      });
-  }
-
 }

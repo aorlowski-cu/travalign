@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Trip } from '../trip';
-import { TRIPS } from '../mock-trips';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot, DocumentData } from '@angular/fire/firestore';
 import { AuthService } from '../../shared/services/auth.service';
@@ -18,6 +18,16 @@ export class TripsService {
               private readonly authService: AuthService,
               private fireStore: AngularFirestore) {
     this.tripsCollection = fireStore.collection<Trip>('trips');
+  }
+  
+  //https://www.mode2.com/news/part-two-angular-with-firestore-intro/
+  getTripObserver(id: string): Observable<Trip> {
+    return this.tripsCollection.doc(id).snapshotChanges().pipe(
+      map((a) => {
+        const data = a.payload.data() as Trip;
+        console.log(data);
+        return data;
+      }));
   }
 
   getTrips(): Observable<Trip[]> {

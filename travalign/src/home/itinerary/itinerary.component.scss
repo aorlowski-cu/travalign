@@ -1,0 +1,17 @@
+//https://www.w3schools.com/howto/howto_css_circles.asp
+.circle{
+    background-color: grey;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+}
+
+h3{
+    font-size: 28px;
+    margin-left: 12px;
+}
+
+.day{
+    display: flex;
+    flex-wrap: nowrap;
+}

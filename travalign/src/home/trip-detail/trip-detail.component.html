@@ -1,8 +1,14 @@
-<p>trip-detail works!</p>
-
-<div *ngIf="trip">
-  <mat-label>{{trip.name}}</mat-label>
-  <mat-label>{{trip.startDate}} ~ {{trip.endDate}}</mat-label>
+<div *ngIf="trip$ | async as trip">
+  <section class="heading">
+    <h1>{{trip.name}}</h1>
+    <h2>{{trip.startDate}} ~ {{trip.endDate}}</h2>
+  </section>
+  <section>
+    <span>Travelers: </span><span *ngFor="let member of trip.members">{{member}}, </span>
+  </section>
+  <section>
+    <app-itinerary [activities]="trip.activities" [startDate]="trip.startDate" [endDate]="trip.endDate"></app-itinerary>
+  </section>
   <!-- <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">

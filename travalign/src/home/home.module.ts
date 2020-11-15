@@ -16,9 +16,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { ItineraryComponent } from './itinerary/itinerary.component';
 
 @NgModule({
-  declarations: [TripsComponent, TripDetailComponent, ActivityComponent],
+  declarations: [TripsComponent, TripDetailComponent, ActivityComponent, ItineraryComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -37,6 +38,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatButtonToggleModule
   ],
   exports: [
+    ItineraryComponent,
     TripsComponent,
     TripDetailComponent
   ],
