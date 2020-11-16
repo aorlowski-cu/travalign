@@ -14,6 +14,7 @@ export class TripDetailComponent implements OnInit {
   panelOpenState: boolean = false;
   trip$: Observable<Trip>;
   dates: string[];
+  trips: any;
 
   constructor(private route: ActivatedRoute,
               private tripsService: TripsService) {
@@ -25,6 +26,10 @@ export class TripDetailComponent implements OnInit {
       this.trip$ = this.tripsService.getTripObserver(id);
     });
   }
+
+  // addMember(){
+  //   console.log(string);
+  // }
 
 }
 

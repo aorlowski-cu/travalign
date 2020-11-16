@@ -3,8 +3,11 @@
     <h1>{{trip.name}}</h1>
     <h2>{{trip.startDate}} ~ {{trip.endDate}}</h2>
   </section>
+<!--  <section>-->
+<!--    <button type="button" (click)="conso";>Add more Members</button>-->
+<!--  </section>-->
   <section>
-    <span>Travelers: </span><span *ngFor="let member of trip.members">{{member}}, </span>
+    <span>Travelers: </span><span *ngFor="let member of trip.members">{{member}},</span>
   </section>
   <section>
     <app-itinerary [activities]="trip.activities" [startDate]="trip.startDate" [endDate]="trip.endDate"></app-itinerary>
@@ -29,7 +32,7 @@
           <mat-card-content>
             Hotel 1
           </mat-card-content>
-          
+
           <mat-card-actions>
             <button>
               <mat-icon>thumb_down</mat-icon>
