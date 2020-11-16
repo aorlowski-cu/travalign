@@ -1,14 +1,18 @@
 <mat-toolbar>
-  <span routerLink="/trip">Travalign - plan great trips together</span>
+  <span>Travalign - Plan Great Trips Together!</span>
   <div *ngIf="user$ | async; then profile else login"></div>
 </mat-toolbar>
 
 <ng-template #profile>
   <div class="profile" *ngIf="user$ | async as user">
+    <button routerLink="/trip" type="button" >View Your Trips</button>
+  </div>
+  <div class="profile" *ngIf="user$ | async as user">
     <h3>Welcome, {{user.displayName}}</h3>
       <img class="avatar" [src]="user.photoURL">
       <button type="button" (click)="logOut()">Not you? Log out</button>
   </div>
+
 </ng-template>
 
 <ng-template #login>

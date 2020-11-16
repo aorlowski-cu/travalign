@@ -39,7 +39,7 @@ export class TripsComponent implements OnInit {
   ngOnInit(): void {
     this.tripsService.getTrips()
       .subscribe(trips => this.trips = trips);
-    
+
     console.log(this.trips);
     this.createTripForm = this.formBuilder.group({
       name: '',

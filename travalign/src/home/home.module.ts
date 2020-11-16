@@ -40,7 +40,8 @@ import { ItineraryComponent } from './itinerary/itinerary.component';
   exports: [
     ItineraryComponent,
     TripsComponent,
-    TripDetailComponent
+    TripDetailComponent,
+    ActivityComponent
   ],
   providers: [
     MatDatepickerModule

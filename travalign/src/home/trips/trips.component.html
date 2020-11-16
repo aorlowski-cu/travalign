@@ -5,10 +5,10 @@
       <label class='title-label'>Your Trips</label>
 
       <div *ngFor="let trip of trips" class="trip-routerlink">
-        <mat-card routerLink="/trip/detail/{{trip.id}}">
+        <mat-card *ngIf ="(trip.members.indexOf(userName)!==-1)" routerLink="/trip/detail/{{trip.id}}">
           <mat-card-title>{{trip.name}}</mat-card-title>
           <mat-card-subtitle>{{trip.startDate}} ~ {{trip.endDate}}</mat-card-subtitle>
-          <mat-card-content *ngIf="trip.members">
+          <mat-card-content  *ngIf="trip.members">
             <mat-icon>group</mat-icon>
             {{trip.members.join(', ')}}
           </mat-card-content>
@@ -16,11 +16,11 @@
       </div>
     </div>
   </div>
-  
+
   <button mat-fab color="accent" (click)=clickAdd() class="add-button">
     <mat-icon aria-hidden="false">add</mat-icon>
   </button>
-  
+
   <form *ngIf="showForm" [formGroup]="createTripForm" (ngSubmit)="onCreateTrip(createTripForm.value)">
     <mat-card>
       <mat-card-title>Start new Trip</mat-card-title>
@@ -38,14 +38,14 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
-    
+
           <mat-form-field>
             <mat-label>Add members</mat-label>
             <mat-select formControlName="members" multiple>
               <mat-option *ngFor="let friend of friends" [value]="friend">{{friend}}</mat-option>
             </mat-select>
           </mat-form-field>
-        
+
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="accent" type="submit">Create Trip</button>
