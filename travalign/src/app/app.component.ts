@@ -16,4 +16,10 @@ export class AppComponent {
     console.log("login button clicked!");
     this.authService.initGoogleLogin();
   }
+
+  logOut(){
+    console.log("logout button clicked!");
+    this.authService.logout();
+    window.location.reload()
+  }
 }

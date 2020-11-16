@@ -19,7 +19,7 @@ export class TripsService {
               private fireStore: AngularFirestore) {
     this.tripsCollection = fireStore.collection<Trip>('trips');
   }
-  
+
   //https://www.mode2.com/news/part-two-angular-with-firestore-intro/
   getTripObserver(id: string): Observable<Trip> {
     return this.tripsCollection.doc(id).snapshotChanges().pipe(
@@ -34,7 +34,7 @@ export class TripsService {
     return this.tripsCollection.valueChanges();
   }
 
-  
+
   getTrip(id: string): Observable<any> {
     // return this.fireStore.collection<Trip>('trips').valueChanges( {'id': id} )
 
@@ -55,18 +55,22 @@ export class TripsService {
     console.log('added trip here');
 
     const id = this.fireStore.createId();
-    
+
     trip['id'] = id;
 
     this.tripsCollection.doc(id).set(trip);
-    
+
     this.tripsCollection.doc(id).get().subscribe(trip => console.log(trip.data()));
 
     // this.fireStore.collection('trips').add(trip);
-      
+
     // this.db.database.ref('trips/1').once('value').then(
     //   x => console.log(x.val())
     // );
 
   }
+
+  // deleteTrip(trip: Trip): void{
+  //   this.tripsCollection.doc(id).
+  // }
 }

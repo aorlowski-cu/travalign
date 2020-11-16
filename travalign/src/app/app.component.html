@@ -7,11 +7,16 @@
   <div class="profile" *ngIf="user$ | async as user">
     <h3>Welcome, {{user.displayName}}</h3>
       <img class="avatar" [src]="user.photoURL">
+      <button type="button" (click)="logOut()">Not you? Log out</button>
   </div>
 </ng-template>
 
 <ng-template #login>
   <button type="button" (click)="logIn()">Log in</button>
+</ng-template>
+
+<ng-template #logout>
+  <button type="button" (click)="logOut()">Not you? Log out</button>
 </ng-template>
 
 
