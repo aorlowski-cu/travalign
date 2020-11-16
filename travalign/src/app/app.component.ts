@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 export class AppComponent {
   user$: Observable<firebase.User> = this.authService.user$;
   constructor(private readonly authService: AuthService){
-
   }
 
   logIn(){
@@ -24,10 +23,5 @@ export class AppComponent {
     this.authService.logout();
     window.location.reload()
   }
-
-  createTrip(){
-
-  }
-
 
 }

@@ -13,6 +13,7 @@ import { firestore } from 'firebase';
 export class TripsService {
 
   private tripsCollection: AngularFirestoreCollection<Trip>;
+
   // trips: Trip[];
   constructor(private db: AngularFireDatabase,
               private readonly authService: AuthService,
@@ -69,8 +70,12 @@ export class TripsService {
     // );
 
   }
+  removeTrip(trip: Trip): void{
 
-  // deleteTrip(trip: Trip): void{
-  //   this.tripsCollection.doc(id).
-  // }
+    this.tripsCollection.doc(trip.id).delete();
+
+  }
 }
+
+
+

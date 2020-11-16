@@ -25,4 +25,7 @@ export class TripDetailComponent implements OnInit {
       this.trip$ = this.tripsService.getTripObserver(id);
     });
   }
+
 }
+
+

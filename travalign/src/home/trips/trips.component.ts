@@ -54,6 +54,18 @@ export class TripsComponent implements OnInit {
     console.log('add clicked');
   }
 
+  //Remove trip method, only works if the user was the one who created it
+  //This is done by making sure the userName is the last name in the list (always added last in creation of trip)
+  removeTrip(trip){
+    if(this.userName === trip.members[trip.members.length-1]) {
+      let placeHolder = this.trips.indexOf(trip);
+      if (placeHolder !== -1) {
+        this.trips.splice(placeHolder, 1);
+        this.tripsService.removeTrip(trip);
+      }
+    }
+  }
+
   onCreateTrip(trip) {
     console.log(trip['members']);
     const newTrip: Trip = {
