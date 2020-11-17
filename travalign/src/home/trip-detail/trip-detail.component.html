@@ -2,11 +2,6 @@
   <section class="heading">
     <h1>{{trip.name}}</h1>
     <h2>{{trip.startDate}} ~ {{trip.endDate}}</h2>
-  </section>
-<!--  <section>-->
-<!--    <button type="button" (click)="conso";>Add more Members</button>-->
-<!--  </section>-->
-  <section>
     <span>Travelers: </span><span *ngFor="let member of trip.members">{{member}},</span>
   </section>
   <section>

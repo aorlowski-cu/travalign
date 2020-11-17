@@ -26,9 +26,9 @@ export class TripsComponent implements OnInit {
 
   createTripForm: FormGroup;
 
-  friends: String[] = ["Alex", "Lincoln"];
+  friends: string[] = ["Alex", "Lincoln"];
 
-  userName: String;
+  userName: string;
 
   constructor(private tripsService: TripsService,
               private formBuilder: FormBuilder,
@@ -57,7 +57,7 @@ export class TripsComponent implements OnInit {
   //Remove trip method, only works if the user was the one who created it
   //This is done by making sure the userName is the last name in the list (always added last in creation of trip)
   removeTrip(trip){
-    if(this.userName === trip.members[trip.members.length-1]) {
+    if(this.userName === trip.creator) {
       let placeHolder = this.trips.indexOf(trip);
       if (placeHolder !== -1) {
         this.trips.splice(placeHolder, 1);
@@ -73,6 +73,7 @@ export class TripsComponent implements OnInit {
       name: trip['name'],
       startDate: formatDate(trip['startDate']),
       endDate: formatDate(trip['endDate']),
+      creator: this.userName,
       members: trip['members'].concat([this.userName]),
       activities: []
     };
@@ -82,5 +83,9 @@ export class TripsComponent implements OnInit {
     this.createTripForm.reset();
     console.log('Reset')
     this.showForm = !this.showForm;
+  }
+
+  printUser(){
+    console.log(this.userName);
   }
 }

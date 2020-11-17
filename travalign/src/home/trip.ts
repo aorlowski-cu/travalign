@@ -6,5 +6,6 @@ export interface Trip {
   startDate: string;
   endDate: string;
   members: string[];
+  creator: string;
   activities: Activity[];
 }
