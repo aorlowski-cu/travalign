@@ -7,6 +7,30 @@
   <section>
     <app-itinerary [activities]="trip.activities" [startDate]="trip.startDate" [endDate]="trip.endDate"></app-itinerary>
   </section>
+
+<!--  Right above bottom section for adding members-->
+  <section>
+    <mat-card>
+      <mat-card-content class = "removeUsers">
+        <mat-label>Add members</mat-label>
+        <mat-form-field>
+          <input matInput formControlName="name" required>  <!-- Method declared, not sure how to use it with the html though-->
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </section>
+<!--Bottom section for removing the members-->
+  <section>
+    <mat-card>
+<!--      *ngIf = "userName.localeCompare(trip.creator) === 0"-->
+        <mat-card-content class = "removeUsers">
+            <mat-label>Remove members</mat-label>
+            <mat-select >
+              <mat-option *ngFor="let member of trip.members" (click) = "removeMember(trip,member)">{{member}}</mat-option>
+            </mat-select>
+        </mat-card-content>
+    </mat-card>
+  </section>
   <!-- <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">

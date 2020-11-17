@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from '../trip';
+import { TripsComponent } from '../trips/trips.component';
 import { TripsService } from '../services/trips.service';
 import { addDays, formatDate } from '../utils';
 import { Observable } from 'rxjs';
@@ -27,9 +28,18 @@ export class TripDetailComponent implements OnInit {
     });
   }
 
-  // addMember(){
-  //   console.log(string);
-  // }
+  removeMember(trip, name){
+  // && this.trips.userName === trip.creator
+    if(trip.members.indexOf(name) !== -1){
+      trip.members.splice(trip.members.indexOf(name),1);
+    }
+    this.tripsService.removeMember(trip,name);
+  }
+
+  addMember(trip, name){
+    trip.members.concat(name);
+    this.tripsService.addMember(trip,name);
+   }
 
 }
 

@@ -1,6 +1,15 @@
-.heading {
-    h1, h2 {
-        text-align: center;
-    }
-    margin: 0 auto;
+$mat-base-color: white;
+
+.removeUsers {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  .add-button {
+    margin-bottom: 10px;
+  }
 }
+
+mat-label {
+  color: $mat-base-color;
+}
+
