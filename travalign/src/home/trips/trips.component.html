@@ -5,7 +5,7 @@
       <label class='title-label'>Your Trips</label>
 
       <div *ngFor="let trip of trips" class="trip-routerlink">
-      <mat-card *ngIf = "userName.localeCompare(trip.creator) === 0" routerLink="/trip/detail/{{trip.id}}">
+      <mat-card *ngIf ="(trip.members.indexOf(userName)!==-1) " routerLink="/trip/detail/{{trip.id}}">
           <mat-card-title>{{trip.name}}</mat-card-title>
           <mat-card-subtitle>{{trip.startDate}} ~ {{trip.endDate}}</mat-card-subtitle>
           <mat-card-content  *ngIf="trip.members">

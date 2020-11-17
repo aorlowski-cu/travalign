@@ -33,7 +33,7 @@ export class TripsComponent implements OnInit {
   constructor(private tripsService: TripsService,
               private formBuilder: FormBuilder,
               private readonly authService: AuthService) {
-    this.authService.user$.subscribe(user => this.userName = user.displayName);
+    this.authService.user$.subscribe(user => this.userName = user.email);
   }
 
   ngOnInit(): void {
@@ -85,7 +85,4 @@ export class TripsComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
-  printUser(){
-    console.log(this.userName);
-  }
 }
