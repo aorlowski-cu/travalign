@@ -28,18 +28,18 @@ export class TripDetailComponent implements OnInit {
     });
   }
 
-  removeMember(trip, name){
-  // && this.trips.userName === trip.creator
-    if(trip.members.indexOf(name) !== -1){
-      trip.members.splice(trip.members.indexOf(name),1);
-    }
-    this.tripsService.removeMember(trip,name);
-  }
-
-  addMember(trip, name){
-    trip.members.concat(name);
-    this.tripsService.addMember(trip,name);
-   }
+  // removeMember(trip, name){
+  // // && this.trips.userName === trip.creator
+  //   if(trip.members.indexOf(name) !== -1){
+  //     trip.members.splice(trip.members.indexOf(name),1);
+  //   }
+  //   this.tripsService.removeMember(trip,name);
+  // }
+  //
+  // addMember(trip, name){
+  //   trip.members.concat(name);
+  //   this.tripsService.addMember(trip,name);
+  //  }
 
 }
 
