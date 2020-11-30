@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/shared/services/auth.service';
 import { Activity } from '../activity';
+import { FormControl, FormGroup} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
+import { formatDate } from '../utils';
+import { TripsService } from '../services/trips.service';
 
 @Component({
   selector: 'app-itinerary',
@@ -11,10 +17,34 @@ export class ItineraryComponent implements OnInit {
   @Input() activities: Activity[] = [];
   @Input() startDate = "";
   @Input() endDate = "";
+  @Input() tripId: string = "";
 
-  constructor() { }
+  userName: string;
+  showForm: boolean = false;
+  createActivity: FormGroup;
+
+  constructor(private authService: AuthService,
+              private formBuilder: FormBuilder,
+              private tripService: TripsService) {
+    this.authService.user$.subscribe(user => this.userName = user.email);
+  }
 
   ngOnInit(): void {
+    this.createActivity = this.formBuilder.group({
+      date: '',
+      name: '',
+      link: ''
+    })
+  }
+
+  filterActivities(date: string): Activity[] {
+    return this.activities.filter(
+      activity => {
+        const d = new Date(activity['date']);
+        return date == d.toDateString();
+      }
+      
+    );
   }
 
   getDatesArray(): string[] {
@@ -31,4 +61,24 @@ export class ItineraryComponent implements OnInit {
     return dateArray;
   }
 
+  addActivity(): void{
+    this.showForm = !this.showForm;
+  }
+
+  onCreateActivity(activity) {
+    const newActivity: Activity = {
+      id: uuidv4(),
+      name: activity['name'],
+      date: formatDate(activity['date']),
+      upvoted: [],
+      downvoted: [],
+      link: activity['link'],
+      confirmed: false,
+      owner: this.userName
+    }
+    console.log(newActivity);
+    this.tripService.addActivity(this.tripId, newActivity);
+    this.showForm = !this.showForm;
+    this.createActivity.reset();
+  }
 }

@@ -3,13 +3,14 @@ export interface Activity {
     upvoted: string[];
     downvoted: string[];
     name: string;
-    type: ActivityType;
+    type?: ActivityType;
     link: string;
-    details: string;
+    details?: string;
     date: string;
-    time: string;
-    optional: boolean,
-    confirmed: boolean
+    time?: string;
+    optional?: boolean;
+    confirmed: boolean;
+    owner: string;
 }
 
 export enum ActivityType {

@@ -6,6 +6,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot, DocumentData } from '@angular/fire/firestore';
 import { AuthService } from '../../shared/services/auth.service';
 import { firestore } from 'firebase';
+import { ActivityService } from './activity.service';
+import { Activity, ActivityType } from '../activity';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -56,26 +59,42 @@ export class TripsService {
     console.log('added trip here');
 
     const id = this.fireStore.createId();
-
     trip['id'] = id;
+    trip['activities'] = []
 
     this.tripsCollection.doc(id).set(trip);
 
-    this.tripsCollection.doc(id).get().subscribe(trip => console.log(trip.data()));
-
-    // this.fireStore.collection('trips').add(trip);
-
-    // this.db.database.ref('trips/1').once('value').then(
-    //   x => console.log(x.val())
-    // );
-
+    // this.tripsCollection.doc(id).get().subscribe(trip => console.log(trip.data()));
   }
   removeTrip(trip: Trip): void{
 
     this.tripsCollection.doc(trip.id).delete();
 
   }
+
+  updateActivity(tripId: string, activityId: string, activity: Activity) {
+    this.tripsCollection.doc(tripId).get().subscribe(
+      t => {
+        const trip = t.data() as Trip;
+        var i;
+        for (i = 0; i < trip.activities.length; i++) {
+          if (trip['activities'][i]['id'] == activityId) {
+            trip['activities'][i] = activity;
+            break;
+          }
+        }
+        this.tripsCollection.doc(tripId).set(trip);
+      }
+    );
+  }
+
+  addActivity(tripId: string, activity: Activity) {
+    this.tripsCollection.doc(tripId).get().subscribe(
+      t => {
+        const trip = t.data() as Trip;
+        trip['activities'].push(activity);
+        this.tripsCollection.doc(tripId).set(trip);
+      }
+    )
+  }
 }
-
-
-

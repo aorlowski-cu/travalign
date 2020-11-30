@@ -5,3 +5,23 @@
   width: 120px;
   height: 160px;
 }
+
+
+.list-item {
+  margin-left: 20px;
+  color: yellow;
+}
+
+mat-card {
+  margin-left: 20px;
+}
+
+.confirmed {
+  border-color: deeppink;
+  border-radius: 2px;
+  border-style: solid;
+}
+
+.not-confirmed {
+  border-style: none;
+}

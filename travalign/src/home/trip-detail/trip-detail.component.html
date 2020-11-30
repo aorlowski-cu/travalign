@@ -5,64 +5,33 @@
     <span>Travelers: </span><span *ngFor="let member of trip.members">{{member}},</span>
   </section>
   <section>
-    <app-itinerary [activities]="trip.activities" [startDate]="trip.startDate" [endDate]="trip.endDate"></app-itinerary>
+    <app-itinerary [tripId]="trip.id" [activities]="trip.activities" [startDate]="trip.startDate" [endDate]="trip.endDate"></app-itinerary>
   </section>
 
 <!--  Right above bottom section for adding members-->
-  <section>
+  <!-- <section>
     <mat-card>
       <mat-card-content class = "removeUsers">
         <mat-label>Add members</mat-label>
         <mat-form-field>
-          <input matInput formControlName="name" required>  <!-- Method declared, not sure how to use it with the html though-->
-        </mat-form-field>
+          <input matInput formControlName="name" required>   -->
+          <!-- Method declared, not sure how to use it with the html though-->
+        <!-- </mat-form-field>
       </mat-card-content>
     </mat-card>
-  </section>
+  </section> -->
+
+
 <!--Bottom section for removing the members-->
-  <section>
-    <mat-card>
+  <!-- <section>
+    <mat-card> -->
 <!--      *ngIf = "userName.localeCompare(trip.creator) === 0"-->
-        <mat-card-content class = "removeUsers">
+        <!-- <mat-card-content class = "removeUsers">
             <mat-label>Remove members</mat-label>
             <mat-select >
               <mat-option *ngFor="let member of trip.members" (click) = "removeMember(trip,member)">{{member}}</mat-option>
             </mat-select>
         </mat-card-content>
     </mat-card>
-  </section>
-  <!-- <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{trip.startDate}} ~ {{trip.endDate}}
-      </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <p>Hotels</p>
-
-    <mat-grid-list cols="2" rowHeight="3:1">
-      <mat-grid-tile>
-        <mat-card>
-          <mat-card-content>
-            Hotel 1
-          </mat-card-content>
-
-          <mat-card-actions>
-            <button>
-              <mat-icon>thumb_down</mat-icon>
-            </button>
-            <button>
-              <mat-icon>thumb_up</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-expansion-panel>
-  </mat-accordion> -->
+  </section> -->
 </div>
