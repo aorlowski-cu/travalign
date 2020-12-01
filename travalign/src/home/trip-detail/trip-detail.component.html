@@ -8,30 +8,54 @@
     <app-itinerary [tripId]="trip.id" [activities]="trip.activities" [startDate]="trip.startDate" [endDate]="trip.endDate"></app-itinerary>
   </section>
 
-<!--  Right above bottom section for adding members-->
-  <!-- <section>
+  <section>
     <mat-card>
-      <mat-card-content class = "removeUsers">
-        <mat-label>Add members</mat-label>
-        <mat-form-field>
-          <input matInput formControlName="name" required>   -->
-          <!-- Method declared, not sure how to use it with the html though-->
-        <!-- </mat-form-field>
+      <mat-card-content  class = "removeUsers">
+        <mat-label>Leave Trip: </mat-label>
+        <button mat-raised-button color="accent" (click) = "leaveTrip(trip)">Confirm </button>
       </mat-card-content>
     </mat-card>
-  </section> -->
+  </section>
+
+<!--  Right above bottom section for adding members-->
+  <section>
+<!--    <mat-card>-->
+<!--      <mat-card-content class = "removeUsers">-->
+<!--        <mat-label>Add members</mat-label>-->
+<!--&lt;!&ndash;        https://material.angular.io/components/input/overview&ndash;&gt;-->
+<!--        <mat-form-field>-->
+<!--          <input matInput formControlName="name" required>-->
+<!--          &lt;!&ndash; Method declared, not sure how to use it with the html though&ndash;&gt;-->
+<!--        </mat-form-field>-->
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
+<!--    *ngIf="showForm" [formGroup]="addUserForm" (ngSubmit)="onCreateTrip(createTripForm.value)"-->
+    <form >
+      <mat-card>
+        <mat-card-content class="form-container">
+          <mat-form-field>
+            <mat-label>Add members</mat-label>
+            <input #todo matInput name="todo" placeholder="Add a member" required>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click) = "addMember(trip,todo.value)" >Confirm user addition</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </section>
 
 
 <!--Bottom section for removing the members-->
-  <!-- <section>
-    <mat-card> -->
-<!--      *ngIf = "userName.localeCompare(trip.creator) === 0"-->
-        <!-- <mat-card-content class = "removeUsers">
+  <section>
+<!--    *ngIf = "userName.localeCompare(trip.creator) === 0"-->
+    <mat-card >
+        <mat-card-content class = "removeUsers">
             <mat-label>Remove members</mat-label>
             <mat-select >
               <mat-option *ngFor="let member of trip.members" (click) = "removeMember(trip,member)">{{member}}</mat-option>
             </mat-select>
         </mat-card-content>
     </mat-card>
-  </section> -->
+  </section>
 </div>

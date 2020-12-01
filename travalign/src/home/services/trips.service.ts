@@ -72,6 +72,18 @@ export class TripsService {
 
   }
 
+  removeMember(trip: Trip, name): void{
+    this.tripsCollection.doc(trip.id).update({
+      members: trip.members.splice(trip.members.indexOf(name,1))
+    });
+  }
+
+  addMember(trip: Trip, name): void{
+    this.tripsCollection.doc(trip.id).update({
+      members: trip.members.concat(name)
+    });
+  }
+
   updateActivity(tripId: string, activityId: string, activity: Activity) {
     this.tripsCollection.doc(tripId).get().subscribe(
       t => {

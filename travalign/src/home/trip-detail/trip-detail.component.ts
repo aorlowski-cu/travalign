@@ -16,6 +16,7 @@ export class TripDetailComponent implements OnInit {
   trip$: Observable<Trip>;
   dates: string[];
   trips: any;
+  userName: string;
 
   constructor(private route: ActivatedRoute,
               private tripsService: TripsService) {
@@ -28,18 +29,28 @@ export class TripDetailComponent implements OnInit {
     });
   }
 
-  // removeMember(trip, name){
-  // // && this.trips.userName === trip.creator
-  //   if(trip.members.indexOf(name) !== -1){
-  //     trip.members.splice(trip.members.indexOf(name),1);
-  //   }
-  //   this.tripsService.removeMember(trip,name);
-  // }
-  //
-  // addMember(trip, name){
-  //   trip.members.concat(name);
-  //   this.tripsService.addMember(trip,name);
-  //  }
+  removeMember(trip, name){
+  // && this.trips.userName === trip.creator
+    if(trip.members.indexOf(name) !== -1 && this.userName === trip.creator){
+      trip.members.splice(trip.members.indexOf(name),1);
+    }
+    // this.tripsService.removeMember(trip,name);
+  }
+
+  addMember(trip, name){
+    trip.members.concat(name);
+    this.tripsService.addMember(trip,name);
+   }
+
+  leaveTrip(trip){
+    // if(trip.members.indexOf(this.tripsService.userName) !== -1){
+    //   trip.members.splice(trip.members.indexOf(this.tripsService.userName),1);
+    // }
+    if(trip.members.length === 0){
+      this.tripsService.removeTrip(trip);
+    }
+    this.tripsService.removeMember(trip,trip.returnUser());
+  }
 
 }
 

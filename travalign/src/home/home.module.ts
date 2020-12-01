@@ -37,7 +37,7 @@ import {MatListModule} from '@angular/material/list';
     MatExpansionModule,
     MatGridListModule,
     MatButtonToggleModule,
-    MatListModule
+    MatListModule,
   ],
   exports: [
     ItineraryComponent,

@@ -54,6 +54,10 @@ export class TripsComponent implements OnInit {
     console.log('add clicked');
   }
 
+  returnUser(): string{
+    return this.userName;
+  }
+
   //Remove trip method, only works if the user was the one who created it
   //This is done by making sure the userName is the last name in the list (always added last in creation of trip)
   removeTrip(trip){
