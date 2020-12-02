@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
 import {MatCardModule} from '@angular/material/card';
 import { ActivityComponent } from './activity/activity.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,6 +39,7 @@ import {MatListModule} from '@angular/material/list';
     MatGridListModule,
     MatButtonToggleModule,
     MatListModule,
+    MatChipsModule
   ],
   exports: [
     ItineraryComponent,

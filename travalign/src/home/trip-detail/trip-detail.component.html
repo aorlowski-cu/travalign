@@ -18,8 +18,8 @@
   </section>
 
 <!--  Right above bottom section for adding members-->
-  <section>
-<!--    <mat-card>-->
+<section *ngIf="trip.creator === userName">
+  <!--    <mat-card>-->
 <!--      <mat-card-content class = "removeUsers">-->
 <!--        <mat-label>Add members</mat-label>-->
 <!--&lt;!&ndash;        https://material.angular.io/components/input/overview&ndash;&gt;-->
@@ -43,12 +43,9 @@
         </mat-card-actions>
       </mat-card>
     </form>
-  </section>
 
 
 <!--Bottom section for removing the members-->
-  <section>
-<!--    *ngIf = "userName.localeCompare(trip.creator) === 0"-->
     <mat-card >
         <mat-card-content class = "removeUsers">
             <mat-label>Remove members</mat-label>

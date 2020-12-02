@@ -5,6 +5,7 @@ import { TripsComponent } from '../trips/trips.component';
 import { TripsService } from '../services/trips.service';
 import { addDays, formatDate } from '../utils';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-trip-detail',
@@ -19,13 +20,17 @@ export class TripDetailComponent implements OnInit {
   userName: string;
 
   constructor(private route: ActivatedRoute,
-              private tripsService: TripsService) {
+              private tripsService: TripsService, private authService: AuthService) {
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       this.trip$ = this.tripsService.getTripObserver(id);
+    });
+
+    this.authService.user$.subscribe(user => {
+      this.userName = user.email;
     });
   }
 

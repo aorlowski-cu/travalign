@@ -10,6 +10,7 @@ import { ActivityService } from './activity.service';
 import { Activity, ActivityType } from '../activity';
 import { v4 as uuidv4 } from 'uuid';
 
+//Singleton pattern
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class TripsService {
 
   private tripsCollection: AngularFirestoreCollection<Trip>;
 
-  // trips: Trip[];
+  // Dependency injection
   constructor(private db: AngularFireDatabase,
               private readonly authService: AuthService,
               private fireStore: AngularFirestore) {
@@ -34,6 +35,7 @@ export class TripsService {
       }));
   }
 
+  //Observer pattern
   getTrips(): Observable<Trip[]> {
     return this.tripsCollection.valueChanges();
   }
