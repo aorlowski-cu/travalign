@@ -31,7 +31,7 @@ export class TripDetailComponent implements OnInit {
 
   removeMember(trip, name){
   // && this.trips.userName === trip.creator
-    if(trip.members.indexOf(name) !== -1 && this.userName === trip.creator){
+    if(trip.members.indexOf(name) !== -1){
       trip.members.splice(trip.members.indexOf(name),1);
     }
     // this.tripsService.removeMember(trip,name);
@@ -46,10 +46,10 @@ export class TripDetailComponent implements OnInit {
     // if(trip.members.indexOf(this.tripsService.userName) !== -1){
     //   trip.members.splice(trip.members.indexOf(this.tripsService.userName),1);
     // }
-    if(trip.members.length === 0){
+    this.tripsService.removeMember(trip,trip.returnUser());
+    if(trip.members.length === 0) {
       this.tripsService.removeTrip(trip);
     }
-    this.tripsService.removeMember(trip,trip.returnUser());
   }
 
 }
