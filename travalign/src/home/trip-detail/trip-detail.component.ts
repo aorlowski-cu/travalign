@@ -46,7 +46,7 @@ export class TripDetailComponent implements OnInit {
     // if(trip.members.indexOf(this.tripsService.userName) !== -1){
     //   trip.members.splice(trip.members.indexOf(this.tripsService.userName),1);
     // }
-    this.tripsService.removeMember(trip,trip.returnUser());
+    this.tripsService.removeMember(trip,this.userName);
     if(trip.members.length === 0) {
       this.tripsService.removeTrip(trip);
     }
