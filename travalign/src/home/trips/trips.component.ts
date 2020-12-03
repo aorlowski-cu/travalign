@@ -18,11 +18,6 @@ import { AuthService } from 'src/shared/services/auth.service';
 export class TripsComponent implements OnInit {
 
   showForm: boolean = false;
-  // t: Trip = {
-  //   startDate: "2020/02/02",
-  //   endDate: "2020/02/08",
-  //   hotels: ["hotel1", "hotel2"]
-  // }
 
   trips: Trip[];
 

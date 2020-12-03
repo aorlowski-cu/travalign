@@ -5,6 +5,7 @@
       <label class='title-label'>Your Trips</label>
 
       <div *ngFor="let trip of trips" class="trip-routerlink">
+        <!-- https://material.angular.io/components/card/overview -->
         <mat-card *ngIf ="(trip.members.indexOf(userName)!==-1) " routerLink="/trip/detail/{{trip.id}}">
           <mat-card-title>{{trip.name}}</mat-card-title>
           <mat-card-subtitle>{{trip.startDate}} ~ {{trip.endDate}}</mat-card-subtitle>
@@ -26,6 +27,7 @@
   </button>
 
   <form *ngIf="showForm" [formGroup]="createTripForm" (ngSubmit)="onCreateTrip(createTripForm.value)">
+    <!-- https://material.angular.io/components/card/overview -->
     <mat-card>
       <mat-card-title>Start new Trip</mat-card-title>
       <mat-card-content class="form-container">

@@ -12,6 +12,7 @@
   <mat-icon aria-hidden="false">add</mat-icon>
 </button>
 <form *ngIf="showForm" [formGroup]="createActivity" (ngSubmit)="onCreateActivity(createActivity.value)">
+  <!-- https://material.angular.io/components/card/overview -->
   <mat-card>
     <mat-card-title class="title">Create New Activity</mat-card-title>
     <mat-card-content class="form-container">

@@ -19,18 +19,8 @@
 
 <!--  Right above bottom section for adding members-->
 <section *ngIf="trip.creator === userName">
-  <!--    <mat-card>-->
-<!--      <mat-card-content class = "removeUsers">-->
-<!--        <mat-label>Add members</mat-label>-->
-<!--&lt;!&ndash;        https://material.angular.io/components/input/overview&ndash;&gt;-->
-<!--        <mat-form-field>-->
-<!--          <input matInput formControlName="name" required>-->
-<!--          &lt;!&ndash; Method declared, not sure how to use it with the html though&ndash;&gt;-->
-<!--        </mat-form-field>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
-<!--    *ngIf="showForm" [formGroup]="addUserForm" (ngSubmit)="onCreateTrip(createTripForm.value)"-->
     <form >
+      <!-- https://material.angular.io/components/card/overview -->
       <mat-card>
         <mat-card-content class="form-container">
           <mat-form-field>

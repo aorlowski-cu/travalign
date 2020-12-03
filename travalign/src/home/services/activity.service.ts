@@ -8,12 +8,12 @@ import { map } from 'rxjs/operators';
 })
 export class ActivityService {
 
+  // https://medium.com/madhash/how-to-crud-in-angular-firebase-firestore-456353d7c62
   private activitiesCollection: AngularFirestoreCollection;
 
   activities: String[] = ["msg1", "msg2"];
 
   constructor(private fireStore: AngularFirestore) { 
-    // this.tripsCollection = fireStore.collection<>('');
     this.activitiesCollection = fireStore.collection('activities');
   }
 
@@ -27,26 +27,7 @@ export class ActivityService {
     )
   }
 
-  addActivity() {
-    // this.activities.push(message);
-    
-
-    // trip['id'] = id;
-
-  }
-
   getActivities(): String[] {
     return this.activities;
   }
 }
-
-
-// <activity_id>
-// [
-//   {
-//     'activity_type': 'restaurant',
-//     'date': '2020-02-02',
-//     'link': 'http://www.google.com'
-//   }
-// ]
-

@@ -50,14 +50,6 @@ export class TripsService {
 // API: https://github.com/angular/angularfire/blob/master/docs/firestore/collections.md
 
   addTrip(trip: Trip): void {
-    // this.trips.push(trip);
-
-    // var updates = {}
-    // updates['/trips/' + this.db.database.ref().child('trips').push().key] = trip;
-
-    // this.db.database.ref().update(updates);
-
-    // this.db.database.ref('trips/' + trip['id']).set(trip);
     console.log('added trip here');
 
     const id = this.fireStore.createId();
@@ -65,8 +57,6 @@ export class TripsService {
     trip['activities'] = []
 
     this.tripsCollection.doc(id).set(trip);
-
-    // this.tripsCollection.doc(id).get().subscribe(trip => console.log(trip.data()));
   }
   removeTrip(trip: Trip): void{
 

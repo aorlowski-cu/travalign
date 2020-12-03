@@ -24,6 +24,7 @@ export class TripDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // https://angular.io/guide/observables-in-angular
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       this.trip$ = this.tripsService.getTripObserver(id);
@@ -35,11 +36,9 @@ export class TripDetailComponent implements OnInit {
   }
 
   removeMember(trip, name){
-  // && this.trips.userName === trip.creator
     if(trip.members.indexOf(name) !== -1){
       trip.members.splice(trip.members.indexOf(name),1);
     }
-    // this.tripsService.removeMember(trip,name);
   }
 
   addMember(trip, name){
@@ -48,9 +47,6 @@ export class TripDetailComponent implements OnInit {
    }
 
   leaveTrip(trip){
-    // if(trip.members.indexOf(this.tripsService.userName) !== -1){
-    //   trip.members.splice(trip.members.indexOf(this.tripsService.userName),1);
-    // }
     this.tripsService.removeMember(trip,this.userName);
     if(trip.members.length === 0) {
       this.tripsService.removeTrip(trip);
