@@ -15,3 +15,9 @@
 4. Finally, run the command line: ng serve --open
     a. The terminal will compile the code, and open : http://localhost:4200 in chrome
 5. From there, log in with a valid google email
+
+
+## Code Demonstration Video
+
+1. Visit: https://drive.google.com/file/d/1yzPBI4Q9yur0m538mWY7N_4xqK5QWGSB/view
+    a. Permissions wise, anyone with a Boulder email should be able to view it but if there are any issues don't hesitate to reach out at lincoln.schafer@colorado.edu and I will get it sorted out for you.
